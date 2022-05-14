@@ -1,6 +1,6 @@
 <template>
   <footer>
-      <div class="text-bottom">projetointegrador.com.br</div>
+      <div class="text-bottom">Projeto Integrador em Computação II - PJI240 - Turma 001</div>
   </footer>
 </template>
 
