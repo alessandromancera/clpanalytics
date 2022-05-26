@@ -1,7 +1,7 @@
 <template>
   <header>
     <nav class="container">
-      <a href="/">CLP Analytics</a>
+      <a href="/" title="HOME - CLP Analytics" >CLP Analytics</a>
       <img
         v-on:click="openMenu"
         id="menu-button"
@@ -13,14 +13,31 @@
 
       <div id="menu-items" :class="{ active: menuActive }">
         <a><img id="menu-logo" src="" alt="logo" /></a>
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/dashboard">Dashboard</a></li>
-          <li><a href="/report">Relatorios</a></li>
-          <li><a href="/about">Sobre</a></li>
+
+        <ul class="menu">
+          <!-- <li @mouseover="listOne = true" @mouseleave="listOne = false">
+            <a href="/">Home</a>
+          </li> -->
+          <li @mouseover="listTwo = true" @mouseleave="listTwo = false">
+            <a href="/dashboard">Dashboard</a>
+          </li>
+          <li @mouseover="listThree = true" @mouseleave="listThree = false">
+            <a href="#">Relatorios</a>
+            <transition name="fade">
+              <ul v-if="listThree" @click="listThree = false">
+                <li><a href="/report-esteira">Esteira</a></li>
+                <li><a href="/report-forno">Forno</a></li>
+                <li><a href="/report-flowpack">Flowpack</a></li>
+              </ul>
+            </transition>
+          </li>
+          <li @mouseover="listFour = true" @mouseleave="listFour = false">
+            <a href="/about">Sobre</a>
+          </li>
         </ul>
       </div>
     </nav>
+
   </header>
 </template>
 
@@ -29,7 +46,11 @@ export default {
   name: 'cHeader',
   data () {
     return {
-      menuActive: false
+      menuActive: false,
+      listOne: false,
+      listTwo: false,
+      listThree: false,
+      listFour: false
     }
   },
   methods: {
@@ -101,6 +122,10 @@ nav {
   display: flex;
 }
 
+#items-menu {
+  display: flex;
+}
+
 ul {
   list-style: none;
   text-align: center;
@@ -116,6 +141,59 @@ ul li a {
 
 a {
   color: var(--color-text-light);
+}
+
+.menu {
+  /* font: 14px/1.5 'Open Sans', sans-serif;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+  list-style: none; */
+}
+
+.menu a {
+  display: flex;
+  padding: 20px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.menu li {
+  display:flexbox;
+  float: left;
+  position: relative;
+  /* background: #222; */
+  color: #fff;
+  /* min-width: 180px; */
+}
+
+.menu li ul {
+  display: block;
+  position: absolute;
+  border:1px solid #c0c0c0;
+  width: 150px;
+  height: 180px;
+  margin: 0 10px;
+  padding: 20;
+  background: grey;
+}
+
+.menu li ul li {
+/* background: beige; */
+  transition: background .2s;
+}
+
+.menu li ul li:hover {
+  /* background-color: #fff; */
+  text-align: center;
+  text-decoration-color: #000000;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .2s;
+}
+.fade-enter, .fade-leave-active {
+  opacity: 0;
 }
 
 @media (min-width: 700px) {

@@ -10,52 +10,55 @@
       </div>
 
       <div id="esteira">
-        <v-client-table
-          :data="usersCollection"
-          :options="tableOptions"
-          :columns="tableColumns">
-        </v-client-table>
-
-        <vuetable ref="vuetable"
-          :api-mode="false"
-          :data="data"
-          :fields="tableColumns"
-          data-path="rows"
-          pagination-path=""
-        ></vuetable>
+        <v-data-table
+            :headers="headers"
+            :items="desserts"
+            :items-per-page="20"
+            show-expand
+            class="elevation-1"
+            loading
+            loading-text="Selecione o Relatório..."
+        >
+          <template v-slot:expanded-item="{ item }">
+            <v-data-table
+                :headers="headersdetalhes"
+                :items="item.detalhes"
+                class="elevation-1"
+            >
+            </v-data-table>
+          </template>
+        </v-data-table>
       </div>
-
     </section>
   </main>
 </template>
 
 <script>
 import api from '@/services/api.js'
-import Vuetable from 'vuetable-2'
 
 export default {
   name: 'cReport',
-  components: {
-    Vuetable
-  },
   data () {
     return {
-      tableColumns: ['id', 'velocidade_rolo', 'velocidade_esteira', 'timestamp'],
-      usersCollection: [],
-      data: [],
-      tableOptions: {
-        headings: {
-          id: 'ID',
-          velocidade_rolo: 'Velocidade Rolo',
-          velocidade_esteira: 'Velocidade Esteira',
-          timestamp: 'Data Hora'
-        }
-        // sortable: ['id', 'timestamp'],
-        // filterable: ['id', 'timestamp']
-      }
+      headers: [
+        { text: '#', value: 'id', sortable: false },
+        { text: 'Velocidade Rolo', value: 'velocidade_rolo', sortable: false },
+        { text: 'Velocidade Esteira', value: 'velocidade_esteira', sortable: false },
+        { text: 'Data Hora', value: 'timestamp', sortable: false },
+        { text: 'Detalhes', value: 'data-table-expand', sortable: false }
+      ],
+      headersdetalhes: [
+        { text: '#', value: 'id', sortable: false },
+        { text: 'Velocidade Rolo', value: 'velocidade_rolo', sortable: false },
+        { text: 'Velocidade Esteira', value: 'velocidade_esteira', sortable: false },
+        { text: 'Esteira', value: 'esteira_id', sortable: false }
+      ],
+      desserts: []
     }
   },
-  mounted () {},
+  mounted () {
+    this.Carregar('esteira')
+  },
   methods: {
     Carregar (typeclick) {
       const url = `/${typeclick}`
@@ -63,10 +66,7 @@ export default {
         api.get(url)
           .then((response) => {
             this.show_esteira = true
-            this.data = JSON.stringify(response.data)
-            this.usersCollection = JSON.stringify(response.data)
-            console.log('usersCollection')
-            console.log(this.usersCollection)
+            this.desserts = response.data.rows
           })
           .catch((error) => {
             console.log('Error')
