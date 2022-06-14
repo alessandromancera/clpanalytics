@@ -44,3 +44,9 @@ h1 {
     margin: 40px 0;
     font-size: 30px;
 }
+
+h2 {
+    color: var(--color-text-title);
+    margin: 10px 0;
+    font-size: 30px;
+}

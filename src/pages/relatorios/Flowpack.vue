@@ -1,17 +1,22 @@
 <template>
   <main>
     <section class="container">
-      <h1>Relatório - Flowpack</h1>
+      <h2>Relatório - Flowpack</h2>
       <div id="flowpack">
-        <v-data-table
-            :headers="headers"
-            :items="desserts"
-            :items-per-page="20"
-            class="elevation-1"
-            loading
-            loading-text="Aguarde, carregando relatório..."
-        >
-        </v-data-table>
+        <v-card max-width="100%" >
+          <v-data-table
+              dense
+              fixed-header
+              height="63vh"
+              :headers="headers"
+              :items="desserts"
+              :items-per-page="12"
+              class="elevation-1"
+              loading
+              loading-text="Aguarde, carregando relatório..."
+          >
+          </v-data-table>
+        </v-card>
       </div>
     </section>
   </main>
@@ -36,6 +41,7 @@ export default {
     }
   },
   mounted () {
+    document.body.setAttribute('data-app', true)
     this.Carregar('flowpack')
   },
   methods: {

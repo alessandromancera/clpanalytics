@@ -2,22 +2,18 @@
   <header>
     <nav class="container">
       <a href="/" title="HOME - CLP Analytics" >CLP Analytics</a>
-      <img
+      <!-- <img
         v-on:click="openMenu"
         id="menu-button"
         src="../assets/menu.svg"
         alt="Abrir Menu"
-      />
+      /> -->
 
-      <div v-on:click="closeMenu" id="menu-overlay" v-if="menuActive"></div>
-
-      <div id="menu-items" :class="{ active: menuActive }">
+      <!-- <div v-on:click="closeMenu" id="menu-overlay" v-if="menuActive"></div> -->
+      <!-- <div id="menu-items" :class="{ active: menuActive }">
         <a><img id="menu-logo" src="" alt="logo" /></a>
 
         <ul class="menu">
-          <!-- <li @mouseover="listOne = true" @mouseleave="listOne = false">
-            <a href="/">Home</a>
-          </li> -->
           <li @mouseover="listTwo = true" @mouseleave="listTwo = false">
             <a href="/dashboard">Dashboard</a>
           </li>
@@ -35,15 +31,21 @@
             <a href="/about">Sobre</a>
           </li>
         </ul>
-      </div>
+      </div> -->
+      <cMenu />
     </nav>
 
   </header>
 </template>
 
 <script>
+import cMenu from './MenuApp.vue'
+
 export default {
   name: 'cHeader',
+  components: {
+    cMenu
+  },
   data () {
     return {
       menuActive: false,
