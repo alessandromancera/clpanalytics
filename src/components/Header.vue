@@ -2,36 +2,6 @@
   <header>
     <nav class="container">
       <a href="/" title="HOME - CLP Analytics" >CLP Analytics</a>
-      <!-- <img
-        v-on:click="openMenu"
-        id="menu-button"
-        src="../assets/menu.svg"
-        alt="Abrir Menu"
-      /> -->
-
-      <!-- <div v-on:click="closeMenu" id="menu-overlay" v-if="menuActive"></div> -->
-      <!-- <div id="menu-items" :class="{ active: menuActive }">
-        <a><img id="menu-logo" src="" alt="logo" /></a>
-
-        <ul class="menu">
-          <li @mouseover="listTwo = true" @mouseleave="listTwo = false">
-            <a href="/dashboard">Dashboard</a>
-          </li>
-          <li @mouseover="listThree = true" @mouseleave="listThree = false">
-            <a href="#">Relatorios</a>
-            <transition name="fade">
-              <ul v-if="listThree" @click="listThree = false">
-                <li><a href="/report-esteira">Esteira</a></li>
-                <li><a href="/report-forno">Forno</a></li>
-                <li><a href="/report-flowpack">Flowpack</a></li>
-              </ul>
-            </transition>
-          </li>
-          <li @mouseover="listFour = true" @mouseleave="listFour = false">
-            <a href="/about">Sobre</a>
-          </li>
-        </ul>
-      </div> -->
       <cMenu />
     </nav>
 
