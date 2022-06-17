@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg">
     <a class="navbar-brand" href="/">Dashboard</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Alterna navegação">
       <span class="navbar-toggler-icon"></span>
@@ -35,5 +35,24 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.dropdown-item a {
+  color: var(--color-text-light);
+}
+
+a {
+  color: var(--color-text-light);
+}
+
+a:hover  {
+  /* text-align: center; */
+  background-color:  #000000;
+  color: var(--color-text-light);
+  text-decoration-color:white;
+}
+
+@media (min-width: 700px) {
+
+}
+
 </style>
