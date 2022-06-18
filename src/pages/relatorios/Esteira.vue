@@ -43,6 +43,7 @@
         </v-dialog>
         <!-- Fim Detalhes -->
 
+        <!-- Inicio Principal -->
         <v-data-table
             dense
             fixed-header
@@ -60,6 +61,7 @@
               </v-app-bar-nav-icon>
             </template>
         </v-data-table>
+        <!-- Fim Principal -->
       </div>
     </section>
   </main>
