@@ -9,9 +9,14 @@
               <v-card-text>
                 <div>
                   <p>CLP Analytics de automação de forno na indústria alimentícia</p>
-                  Através de consulta na API coletando os dados para análise e tomada de<br/>
-                  decisões a partir do FrontEnd.<br/>
-                  <br/>
+
+                  Utilizando:-<br />
+                  API - node.js - hospedado em https://www.heroku.com/<br />
+                  Frontend - vue.js - hospedado em https://vercel.com/<br />
+                  Banco de dados - MySql - hospedado em https://www.heroku.com/<br />
+                  Análise e Gráficos - Python<br />
+                  Versionamento Local - Git<br />
+                  Versionamento Cloud - Github<br />
                   Projeto Integrador em Computação II - PJI240 - Turma 001<br/>
                   Univesp - Universidade Virtual do Estado de São Paulo - Pólo Marília-SP<br/>
                   <br/>
