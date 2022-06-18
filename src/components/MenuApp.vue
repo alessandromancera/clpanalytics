@@ -55,4 +55,8 @@ export default {
     z-index: 999;
     position: relative;
   }
+
+  .navbar-toggler-icon {
+    background-color: #fff;
+  }
 </style>
