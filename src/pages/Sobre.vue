@@ -7,13 +7,16 @@
               justify="center"
               align="center"
             >
-            <v-card
-              max-width="100%"
-            >
+            <v-card max-width="100%" >
               <v-card-text>
                 <div>
                   <v-row>
-                    <h4>CLP Analytics de automação de forno na indústria alimentícia</h4>
+                    <div
+                      justify="center"
+                      align="center"
+                    >
+                      <h4>CLP Analytics de automação de forno na indústria alimentícia</h4>
+                    </div>
                   </v-row>
                   <v-row>
                     <v-col>
@@ -21,7 +24,10 @@
                         max-width="100%"
                       >
                         <v-card-text>
-                          <div><h3>Utilizado neste projeto</h3></div>
+                          <div
+                            justify="center"
+                            align="center"
+                          ><h3>Utilizado neste projeto</h3></div>
                         </v-card-text>
                         <v-card-actions>
                           API - node.js - hospedado em https://www.heroku.com/<br />
@@ -38,7 +44,10 @@
                         max-width="100%"
                       >
                         <v-card-text>
-                          <div><h3>Integrantes</h3></div>
+                          <div
+                            justify="center"
+                            align="center"
+                          ><h3>Integrantes</h3></div>
                         </v-card-text>
                         <v-card-actions>
                           Alessandro Lima Mancera, 2008684<br />
@@ -57,7 +66,10 @@
                     <v-col>
                       <v-card max-width="100%" >
                         <v-card-text>
-                          <div><h6>
+                          <div
+                            justify="center"
+                            align="center"
+                          ><h6>
                             Projeto Integrador em Computação II - PJI240 - Turma 001<br />
                             Univesp - Universidade Virtual do Estado de São Paulo - Pólo Marília-SP<br />
                           </h6></div>
