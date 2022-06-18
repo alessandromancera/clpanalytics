@@ -17,6 +17,7 @@
                   Análise e Gráficos - Python<br />
                   Versionamento Local - Git<br />
                   Versionamento Cloud - Github<br />
+                  <br />
                   Projeto Integrador em Computação II - PJI240 - Turma 001<br/>
                   Univesp - Universidade Virtual do Estado de São Paulo - Pólo Marília-SP<br/>
                   <br/>
