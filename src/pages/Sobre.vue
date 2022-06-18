@@ -1,7 +1,7 @@
 <template>
     <main>
       <section class="container">
-        <h1>Sobre</h1>
+        <h2>Sobre</h2>
 
         <div class="about" v-html="about"></div>
 
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import api from '@/services/api.js'
+// import api from '@/services/api.js'
 
 export default {
   name: 'cSobre',
@@ -21,10 +21,10 @@ export default {
     }
   },
   mounted () {
-    api.get('/about.json').then((response) => {
-      this.about = response.data.about
-      console.log(response.data.about)
-    })
+    // api.get('/about.json').then((response) => {
+    //   this.about = response.data.about
+    //   console.log(response.data.about)
+    // })
   }
 }
 </script>

@@ -1,11 +1,12 @@
 <template>
+<div class="container">
   <nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand" href="/">Dashboard</a>
+    <a class="navbar-brand" href="/">CLP Analytics</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Alterna navegação">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav menu">
+      <ul class="navbar-nav">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Relatórios
@@ -22,6 +23,7 @@
       </ul>
     </div>
   </nav>
+</div>
 </template>
 
 <script>
@@ -36,23 +38,21 @@ export default {
 </script>
 
 <style scoped>
-.dropdown-item a {
-  color: var(--color-text-light);
-}
+  nav {
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    color: var(--color-text-light);
+  }
 
-a {
-  color: var(--color-text-light);
-}
+  a {
+    background-color: var(--color-background-nav);
+    color: #fff;
+  }
 
-a:hover  {
-  /* text-align: center; */
-  background-color:  #000000;
-  color: var(--color-text-light);
-  text-decoration-color:white;
-}
-
-@media (min-width: 700px) {
-
-}
-
+  .dropdown-menu {
+    background-color: var(--color-background-nav);
+    z-index: 999;
+    position: relative;
+  }
 </style>
