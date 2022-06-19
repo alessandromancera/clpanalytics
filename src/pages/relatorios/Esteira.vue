@@ -40,6 +40,15 @@
                             'items-per-page-text':'Total por página: '
                           }"
                       >
+                        <!--  -->
+                        <template
+                          v-for="header in headersdetalhes.filter((header) =>
+                            header.hasOwnProperty('formatter')
+                          )"
+                          v-slot:[`item.${header.value}`]="{ value }"
+                          >
+                          {{ header.formatter(value) }}
+                        </template>
                       </v-data-table>
                     </v-col>
                   </v-row>
@@ -72,6 +81,7 @@
                 <v-icon>mdi mdi-archive-eye</v-icon>
               </v-app-bar-nav-icon>
             </template>
+            <!--  -->
             <template
               v-for="header in headers.filter((header) =>
                 header.hasOwnProperty('formatter')
@@ -105,7 +115,8 @@ export default {
       headersdetalhes: [
         { text: '#', value: 'id', sortable: false },
         { text: 'Velocidade Rolo', value: 'velocidade_rolo', sortable: false },
-        { text: 'Velocidade Esteira', value: 'velocidade_esteira', sortable: false }
+        { text: 'Velocidade Esteira', value: 'velocidade_esteira', sortable: false },
+        { text: 'Data Hora', value: 'timestamp', sortable: false, formatter: (x) => (x ? moment(x).format('DD/MM/yyyy HH:mm:ss') : null) }
       ],
       modal: {
         detalhes: false,
