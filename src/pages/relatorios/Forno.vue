@@ -25,16 +25,31 @@
                   <v-row>
                     <v-col cols="12" class="px-6">
                       <v-data-table
-                          dense
-                          fixed-header
-                          height="70vh"
-                          :headers="headersdetalhes"
-                          :items="itensdetalhes"
-                          :items-per-page="9"
-                          class="elevation-1"
-                          loading
-                          loading-text="Aguarde, carregando detalhes..."
+                        dense
+                        fixed-header
+                        height="65vh"
+                        :headers="headersdetalhes"
+                        :items="itensdetalhes"
+                        :items-per-page="12"
+                        class="elevation-1"
+                        loading
+                        loading-text="Aguarde, carregando detalhes..."
+                        :footer-props="{
+                          showFirstLastPage: true,
+                          'items-per-page-all-text': 'Todos',
+                          'items-per-page-options': [5, 10, 12, 15, -1],
+                          'items-per-page-text':'Total por página: '
+                        }"
                       >
+                        <!--  -->
+                        <template
+                          v-for="header in headersdetalhes.filter((header) =>
+                            header.hasOwnProperty('formatter')
+                          )"
+                          v-slot:[`item.${header.value}`]="{ value }"
+                          >
+                          {{ header.formatter(value) }}
+                        </template>
                       </v-data-table>
                     </v-col>
                   </v-row>
@@ -46,20 +61,35 @@
 
         <v-card max-width="100%" >
           <v-data-table
-              dense
-              fixed-header
-              height="63vh"
-              :headers="headers"
-              :items="desserts"
-              :items-per-page="10"
-              class="elevation-1"
-              loading
-              loading-text="Aguarde, carregando relatório..."
+            dense
+            fixed-header
+            height="63vh"
+            :headers="headers"
+            :items="desserts"
+            :items-per-page="10"
+            class="elevation-1"
+            loading
+            loading-text="Aguarde, carregando relatório..."
+            :footer-props="{
+              showFirstLastPage: true,
+              'items-per-page-all-text': 'Todos',
+              'items-per-page-options': [5, 10, 12, 15, -1],
+              'items-per-page-text':'Total por página: '
+            }"
           >
             <template #[`item.details`]="{ item }">
               <v-app-bar-nav-icon @click="Detalhes(item)">
                 <v-icon>mdi mdi-archive-eye</v-icon>
               </v-app-bar-nav-icon>
+            </template>
+            <!--  -->
+            <template
+              v-for="header in headers.filter((header) =>
+                header.hasOwnProperty('formatter')
+              )"
+              v-slot:[`item.${header.value}`]="{ value }"
+              >
+              {{ header.formatter(value) }}
             </template>
           </v-data-table>
         </v-card>
@@ -71,6 +101,7 @@
 
 <script>
 import api from '@/services/api.js'
+import moment from 'moment'
 
 export default {
   name: 'cReportForno',
@@ -88,7 +119,7 @@ export default {
       { text: 'Temperatura Z4', value: 'temperatura_z4', sortable: false },
       { text: 'Temperatura Z5', value: 'temperatura_z5', sortable: false },
       { text: 'Velocidade Esteira', value: 'velocidade_esteira', sortable: false },
-      { text: 'Data Hora', value: 'timestamp', sortable: false },
+      { text: 'Data Hora', value: 'timestamp', sortable: false, formatter: (x) => (x ? moment(x).format('DD/MM/yyyy HH:mm:ss') : null) },
       { text: 'Detalhes', value: 'details', sortable: false }
     ],
     headersdetalhes: [
@@ -105,7 +136,7 @@ export default {
       { text: 'Pid Z4', value: 'pid_z4', sortable: false },
       { text: 'Pid Z5', value: 'pid_z5', sortable: false },
       { text: 'Corrente Motor', value: 'corrente_motor', sortable: false },
-      { text: 'Data Hora', value: 'timestamp', sortable: false }
+      { text: 'Data Hora', value: 'timestamp', sortable: false, formatter: (x) => (x ? moment(x).format('DD/MM/yyyy HH:mm:ss') : null) }
     ],
     desserts: []
   }),
