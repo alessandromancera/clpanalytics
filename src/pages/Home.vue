@@ -13,12 +13,12 @@
                       max-width="100%"
                     >
                       <v-card-text>
-                        <div><h3>FORNO</h3></div>
+                        <div><h5>FORNO</h5></div>
                       </v-card-text>
                       <v-card-actions>
                         Lidos:
                         <v-spacer></v-spacer>
-                        <h3>{{dataValues.forno}}</h3>
+                        <h5>{{dataValues.forno}}</h5>
                       </v-card-actions>
                     </v-card>
                   </v-col>
@@ -28,12 +28,12 @@
                       max-width="100%"
                     >
                       <v-card-text>
-                        <div><h3>ESTEIRA</h3></div>
+                        <div><h5>ESTEIRA</h5></div>
                       </v-card-text>
                       <v-card-actions>
                         Lidos:
                         <v-spacer></v-spacer>
-                        <h3>{{dataValues.esteira}}</h3>
+                        <h5>{{dataValues.esteira}}</h5>
                       </v-card-actions>
                     </v-card>
                   </v-col>
@@ -43,12 +43,12 @@
                       max-width="100%"
                     >
                       <v-card-text>
-                        <div><h3>FLOWPACK</h3></div>
+                        <div><h5>FLOWPACK</h5></div>
                       </v-card-text>
                       <v-card-actions>
                         Lidos:
                         <v-spacer></v-spacer>
-                        <h3>{{dataValues.flowpack}}</h3>
+                        <h5>{{dataValues.flowpack}}</h5>
                       </v-card-actions>
                     </v-card>
                   </v-col>
@@ -61,25 +61,30 @@
                     <v-card
                       max-width="100%"
                     >
-                      <!-- <v-row> -->
-                        <!-- <v-col
-                          class="mx-auto"
-                          cols="12"
-                        > -->
-                          <!-- <v-card-text>
-                            <div><h4>Gráfico dos Detalhes lidos</h4></div>
-                          </v-card-text> -->
-                          <v-card-actions>
-                            <div class="container text-center">
-                              <GoogleChart/>
-                            </div>
-                          </v-card-actions>
-                        <!-- </v-col> -->
-                      <!-- </v-row> -->
+                      <v-card-actions>
+                        <Analise/>
+                      </v-card-actions>
                     </v-card>
                   </v-col>
                 </v-row>
               </v-card-text>
+
+              <!-- <v-card-text>
+                <v-row>
+                  <v-col>
+                    <v-card
+                      max-width="100%"
+                    >
+                      <v-card-actions>
+                        <div class="container text-center">
+                          <GoogleChart/>
+                        </div>
+                      </v-card-actions>
+                    </v-card>
+                  </v-col>
+                </v-row>
+              </v-card-text> -->
+
             </v-card>
 
           </div>
@@ -89,12 +94,12 @@
 
 <script>
 import api from '@/services/api.js'
-import GoogleChart from '@/components/charts/GoogleCharts.vue'
+import Analise from '@/components/analise/Analise.vue'
 
 export default {
   name: 'cHome',
   components: {
-    GoogleChart
+    Analise
   },
   data: () => ({
     reveal: false,
