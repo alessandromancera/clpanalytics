@@ -1,5 +1,5 @@
 <template>
-    <main>
+    <!-- <main> -->
       <section class="container">
         <h2>Dashboard</h2>
           <div>
@@ -62,59 +62,70 @@
                       max-width="100%"
                     >
                       <v-card-actions>
-                        <Analise/>
-                      </v-card-actions>
-                    </v-card>
-                  </v-col>
-                </v-row>
-              </v-card-text>
-
-              <!-- <v-card-text>
-                <v-row>
-                  <v-col>
-                    <v-card
-                      max-width="100%"
-                    >
-                      <v-card-actions>
-                        <div class="container text-center">
-                          <GoogleChart/>
+                        <div style="width:100%;">
+                          <GChart
+                            :settings="{packages: ['bar']}"
+                            :data="chartData"
+                            :options="chartOptions"
+                            :createChart="(el, google) => new google.charts.Bar(el)"
+                            @ready="onChartReady"
+                          />
                         </div>
                       </v-card-actions>
                     </v-card>
                   </v-col>
                 </v-row>
-              </v-card-text> -->
-
+              </v-card-text>
             </v-card>
-
           </div>
       </section>
-    </main>
+    <!-- </main> -->
 </template>
 
 <script>
 import api from '@/services/api.js'
-import Analise from '@/components/analise/Analise.vue'
+import { GChart } from 'vue-google-charts/legacy'
 
 export default {
   name: 'cHome',
   components: {
-    Analise
+    GChart
   },
   data: () => ({
-    reveal: false,
     dataValues: {
       forno: 0,
       esteira: 0,
       flowpack: 0
-    }
+    },
+    chartsLib: null,
+    chartData: [
+      ['Equipamentos', 'Forno', 'Esteira', 'Flowpack'],
+      ['Lidos', 94, 64, 89]
+    ]
   }),
+  computed: {
+    chartOptions () {
+      if (!this.chartsLib) return null
+      return this.chartsLib.charts.Bar.convertOptions({
+        chart: {
+          title: 'Automação de forno na industria',
+          subtitle: 'Leituras de fornos, esteiras e flowpack'
+        },
+        height: 252,
+        bars: 'horizontal',
+        colors: ['#1b9e77', '#d95f02', '#7570b3']
+      })
+    }
+  },
   mounted () {
     this.Carregar('forno/c', 'forno')
     this.Carregar('esteira/c', 'esteira')
     this.Carregar('flowpack/c', 'flowpack')
   },
   methods: {
+    onChartReady (chart, google) {
+      this.chartsLib = google
+    },
     Carregar (typeclick, key) {
       const url = `/${typeclick}`
       if (url !== '') {
@@ -147,10 +158,4 @@ main {
       align-items: center;
     }
 
-.v-card--reveal {
-      bottom: 0;
-      opacity: 1 !important;
-      position: absolute;
-      width: 100%;
-    }
 </style>

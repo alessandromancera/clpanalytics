@@ -13,6 +13,7 @@
 <script>
 import { GChart } from 'vue-google-charts/legacy'
 
+
 export default {
   components: {
     GChart
