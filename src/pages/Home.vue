@@ -121,6 +121,11 @@ export default {
     this.Carregar('forno/c', 'forno')
     this.Carregar('esteira/c', 'esteira')
     this.Carregar('flowpack/c', 'flowpack')
+    // this.chartData = [['Equipamentos', 'Forno', 'Esteira', 'Flowpack']]
+    // this.chartData[1] = ['Lidos']
+    // this.chartData[1][1] = `${this.dataValues.forno}`
+    // this.chartData[1][2] = `${this.dataValues.esteira}`
+    // this.chartData[1][3] = `${this.dataValues.flowpack}`
   },
   methods: {
     onChartReady (chart, google) {

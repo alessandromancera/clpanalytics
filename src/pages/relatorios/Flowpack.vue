@@ -12,7 +12,7 @@
             :items="desserts"
             :items-per-page="12"
             class="elevation-1"
-            loading
+            :loading="carregando"
             loading-text="Aguarde, carregando relatório..."
             :footer-props="{
               showFirstLastPage: true,
@@ -52,7 +52,8 @@ export default {
         { text: 'Posicao Figura', value: 'posicao_figura', sortable: false },
         { text: 'Data Hora', value: 'timestamp', sortable: false, formatter: (x) => (x ? moment(x).format('DD/MM/yyyy HH:mm:ss') : null) }
       ],
-      desserts: []
+      desserts: [],
+      carregando: false
     }
   },
   mounted () {
@@ -63,6 +64,7 @@ export default {
     Carregar (typeclick) {
       const url = `/${typeclick}`
       if (url !== '') {
+        this.carregando = true
         api.get(url)
           .then((response) => {
             this.desserts = response.data.rows
@@ -71,7 +73,7 @@ export default {
             console.log('Error')
             console.log(error)
           })
-          .finally(() => console.log('Finalizado'))
+          .finally(() => console.log('Finalizado'), this.carregando = false)
       }
     }
   }
